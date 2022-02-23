@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: consumer50
+  name: consumer50
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumer50
+  template:
+    metadata:
+      labels:
+        app: consumer50
+    spec:
+      containers:
+        - name: consumer50
+          #image: docker.io/mezzeddine/threadedconsumer:v1
+          #image: docker.io/mezzeddine/threadedconsumerwithserver:v4
+          #image: docker.io/mezzeddine/mynewconsumer
+          #image: docker.io/mezzeddine/consumergrpcdynamic:v1
+          #image: docker.io/mezzeddine/consumergrpcdynamicwithsleep:v5
+          #image: docker.io/mezzeddine/consumergrpcdynamicwithsleep:v7
+          #image: docker.io/mezzeddine/consumerbin:v1
+          #image: docker.io/mezzeddine/consumerbin:v2
+          #image: docker.io/mezzeddine/consumerbin:v4
+          image: docker.io/mezzeddine/consumerbin:v6
+
+
+
+
+          env:
+            - name: BOOTSTRAP_SERVERS
+              value: my-cluster-kafka-bootstrap:9092
+            - name: TOPIC
+              value: testtopic1
+            - name: GROUP_ID
+              value: testgroup1
+            - name: LOG_LEVEL
+              value: "INFO"
+            - name: SLEEP
+              value: "20"
+            - name: MESSAGE_COUNT
+              value: "1000000"
+            - name: ADDITIONAL_CONFIG
+              value: |
+                max.poll.records=500
