@@ -16,20 +16,7 @@ spec:
     spec:
       containers:
         - name: consumer100
-          #image: docker.io/mezzeddine/threadedconsumer:v1
-          #image: docker.io/mezzeddine/threadedconsumerwithserver:v4
-          #image: docker.io/mezzeddine/mynewconsumer
-          #image: docker.io/mezzeddine/consumergrpcdynamic:v1
-          #image: docker.io/mezzeddine/consumergrpcdynamicwithsleep:v5
-          #image: docker.io/mezzeddine/consumergrpcdynamicwithsleep:v7
-          #image: docker.io/mezzeddine/consumerbin:v1
-          #image: docker.io/mezzeddine/consumerbin:v2
-          #image: docker.io/mezzeddine/consumerbin:v4
           image: docker.io/mezzeddine/consumerbin:v6
-
-
-
-
           env:
             - name: BOOTSTRAP_SERVERS
               value: my-cluster-kafka-bootstrap:9092

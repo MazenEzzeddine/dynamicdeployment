@@ -32,7 +32,6 @@ public class Deploy {
                     .get();
             k8s.pods().inNamespace("default").create(pod);
 
-
         }
     }
 }
